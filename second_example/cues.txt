@@ -1,0 +1,43 @@
+1) rails new cms
+2) cd cms
+3) edit Gemfile and add:
+
+group :test do
+  gem 'cucumber-rails'
+  gem "rspec-rails", "~> 2.4"
+  gem 'capybara'
+  gem 'database_cleaner'
+end
+
+4) bundle install
+5) rails g rspec:install
+6) rails g cucumber:install
+7) rm -rf test
+8) create features/manage_users.feature
+
+  Feature: Manage users
+    In order to be aware of and serve my customers
+    As an administrator
+    I want to create, read, update, and delete user information
+    
+  Scenario: View user list
+    Given I have users named George, Mary
+    When I go to the list of users
+    Then I should see "George"
+    And I should see "Mary"
+    
+9) cucumber
+10) copy boilerplate into features/step_definitions/user_steps.rb
+11) modify regex to match all names and split them, then attempt to create a user
+12) cucumber
+13) rails g scaffold user name:string
+14) rake db:migrate
+15) rake db:test:clone
+16) edit user_spec.rb, add test for uniqueness of name
+17) rspec spec
+18) add uniqueness constraint to user.rb
+19) rspec spec
+20) cucumber
+21) edit features/support/paths.rb, add /the list of users/, pointing to '/users'
+22) cucumber
+23) demonstrate working feature in a browser

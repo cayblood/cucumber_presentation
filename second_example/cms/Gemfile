@@ -1,0 +1,11 @@
+source 'http://rubygems.org'
+
+gem 'rails', '3.0.5'
+gem 'sqlite3'
+
+group :test do
+  gem 'cucumber-rails'
+  gem "rspec-rails", "~> 2.4"
+  gem 'capybara'
+  gem 'database_cleaner'
+end
